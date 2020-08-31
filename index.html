@@ -3,15 +3,57 @@
 
 <head>
     <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script src="js/plotly.min.js"></script>    
+    <script src="js/data.js"></script>
     <script src="js/ml.min.js"></script> 
     <script src="js/jquery-1.5.1.min.js"></script>       
     <title>Data Visualization Demo</title> 
 </head>
 
 <body>
-	<div id='div1'></div>
-	<div id='div2'></div>	
+	<div id='head'>
+		<h3>Mockaroo API Data Visualization Tool</h3>
+  		<p>A simple web application to retrieve and visualize data through Mockaroo.com API</p>
+	</div>
+	<div id='p1'>
+		<h4>Data Visualization</h4>
+		<div id='div1'></div>
+		<div id='div2'></div>
+	</div>
+	<div id='p2'>
+		<h4>API Configuration</h4>
+		<div id='form'>			
+			<div class="input_wrapper">
+				<div class="label"><label for="url">Schema share link </label></div>
+				<div class="pretext">https://www.mockaroo.com/</div>
+	  			<input type="text" id="url" name="url" maxlength="10">
+	  			<div class="tooltip">&#x24D8;
+ 					<span class="tooltiptext">After creating your schema on mockaroo.com, click on 'Create API' button and enter the last part of the share link.</span>
+				</div>
+	  		</div>
+	  		<div class="input_wrapper">
+		  		<label for="apikey">API Key</label>
+		  		<input type="text" id="apikey" name="apikey">
+		  		<div class="tooltip">&#x24D8;
+	 					<span class="tooltiptext">API key is the characters after 'key=' attribute in the sample URL.</span>
+				</div>
+			</div>
+			<div class="input_wrapper">
+		  		<label for="count">Count</label>
+		  		<input type="number" min="10" max="1000" id="count" value="100" name="count">
+		  		<div class="tooltip">&#x24D8;
+	 					<span class="tooltiptext">Number of records to be retrieved.</span>
+				</div>
+				<input type="submit" value="Test API">
+				<div class="tooltip">&#x24D8;
+	 					<span class="tooltiptext">Number of records to be retrieved.</span>
+				</div>
+		  	</div>	
+	  	</div>
+	</div>
+	
+		
 	<script type="text/javascript" src="js/plot.js"></script>
 </body>
 </html>
