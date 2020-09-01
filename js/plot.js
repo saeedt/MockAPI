@@ -32,7 +32,7 @@ function testApi(){
     $('#apikey').removeClass("error");
   }
   if (test){
-    let testURL=schema+'?key='+apk+'&?array=true&?count=10';
+    let testURL=schema+'?key='+apk+'&count=10';
     $.get(testURL)
     .success(function(data){
       if (data.length >0){
@@ -49,11 +49,11 @@ function testApi(){
         });
         xsel+='</select><div class="tooltip">&nbsp;&#x24D8;<span class="tooltiptext">Independent variable x from the schema.</span></div>';
         ysel+='</select><div class="tooltip">&nbsp;&#x24D8;&nbsp;<span class="tooltiptext">Dependant variable y from the schema.</span></div><input type="submit" id="getData" value="Retrieve Data" onclick="getData()" disabled><div class="tooltip">&nbsp;&#x24D8;<span class="tooltiptext">Retrieve data from Mockaroo.com and visualize.</span></div>';
-        //$("#cnt").html(cnt);
+        $("#cnt").html(cnt);
         $("#xcombo").html(xsel);
         $("#ycombo").html(ysel);
         activateCombos();
-        url = schema+'?key='+apk+'&?array=true&?count=';
+        url = schema+'?key='+apk+'&count=';
         } else {
           apiError('No data received.');
         }      
@@ -112,8 +112,8 @@ function verifyCombos(){
 }
 
 function getData(){ //download and visualize the data
-  //let cnt = parseInt($('#count').val());
-  let cnt = 100;
+  let cnt = parseInt($('#count').val());
+  //let cnt = 100;
   console.log(url+cnt);
   $.get(url+cnt)
     .success(function(d){
