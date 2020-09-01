@@ -500,3 +500,20 @@ const data = [
     "y": 5038.12
   }
 ]
+
+const baseLayout = {
+  images: [{
+    name: 'sample',
+    source: '../css/sample.png',
+    xref: "paper",
+    yref: "paper",
+    x: 0.1,
+    y: .8,
+    sizex: .8,
+    sizey: .8,
+    opacity: .35,
+    layer: "below"
+  }]
+};
+
+const template = {layout: baseLayout};

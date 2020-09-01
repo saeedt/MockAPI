@@ -12,7 +12,7 @@ $(document).ready(function(){
           } 
       }, 1);
   });
-  plotData(data,'x','y');
+  plotData(data,'x','y',true);
 });
 
 function testApi(){
@@ -124,7 +124,8 @@ function getData(){ //download and visualize the data
     })
 }
 
-function plotData(idata,xk,yk){
+function plotData(idata,xk,yk,wm){
+  wm = wm || false;
   const xdata = idata.map((_,i)=>idata[i][xk]);
   const ydata = idata.map((_,i)=>idata[i][yk]);
   let sortxdata = [Math.min(...xdata),Math.max(...xdata)];
@@ -133,6 +134,13 @@ function plotData(idata,xk,yk){
   for (let i=0; i<sortxdata.length; i++){
     predydata[i] = Math.round(regression.predict(sortxdata[i]));//Math.round((regression.predict(sortxdata[i])*100)+Number.EPSILON);
   }
+
+  const layout = {template: template, 
+                            images: [{templateitemname: 'sample',visible: wm}],
+                            legend:{x:1,xanchor:'right',y:1.1,orientation:'h',font:{size:18}},
+                            xaxis:{title:{text:xk,font:{size:18}},dtick:10},
+                            yaxis:{title:{text:yk,font:{size:18}}}
+                          };                          
   const config = {
     responsive: true,
     toImageButtonOptions: {
@@ -152,7 +160,7 @@ function plotData(idata,xk,yk){
                 'name' : 'Regression Line',
                 'mode' : 'lines'}];
   //console.log(pdata);
-  Plotly.newPlot('div1',[pdata[0],pdata[1]],{legend:{x:1,xanchor:'right',y:1.1,orientation:'h',font:{size:20}},xaxis:{title:{text:'X',font:{size:24}},dtick:10},yaxis:{title:{text:'Y',font:{size:24}}}},config);
+  Plotly.newPlot('div1',[pdata[0],pdata[1]],layout,config);
   const score = regression.score(xdata,ydata);
   $("#div2").html('Line Equation '+regression.toString()+
                     '<br>R: '+score.r+ ' R<sup>2</sup>: '+score.r2+ ' &#967;<sup>2</sup>: '+score.chi2+
