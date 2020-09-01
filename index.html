@@ -25,31 +25,27 @@
 		<h4>API Configuration</h4>
 		<div id='form'>			
 			<div class="input_wrapper">
-				<div class="label"><label for="url">Schema share link </label></div>
-				<div class="pretext">https://www.mockaroo.com/</div>
-	  			<input type="text" id="url" name="url" maxlength="10">
+				<label for="url">Schema link </label>
+				<input type="text" id="url" name="url" maxlength="39" value="https://api.mockaroo.com/api/0c0b0d20">
 	  			<div class="tooltip">&#x24D8;
  					<span class="tooltiptext">After creating your schema on mockaroo.com, click on 'Create API' button and enter the last part of the share link.</span>
 				</div>
 	  		</div>
 	  		<div class="input_wrapper">
 		  		<label for="apikey">API Key</label>
-		  		<input type="text" id="apikey" name="apikey">
+		  		<input type="text" id="apikey" name="apikey" maxlength="10" value="92ae5410">
 		  		<div class="tooltip">&#x24D8;
 	 					<span class="tooltiptext">API key is the characters after 'key=' attribute in the sample URL.</span>
 				</div>
-			</div>
-			<div class="input_wrapper">
-		  		<label for="count">Count</label>
-		  		<input type="number" min="10" max="1000" id="count" value="100" name="count">
-		  		<div class="tooltip">&#x24D8;
-	 					<span class="tooltiptext">Number of records to be retrieved.</span>
-				</div>
-				<input type="submit" value="Test API">
+				<input type="submit" value="Test API" onclick="testApi()">
 				<div class="tooltip">&#x24D8;
-	 					<span class="tooltiptext">Number of records to be retrieved.</span>
+	 					<span class="tooltiptext">Test the API paramteres.</span>
 				</div>
-		  	</div>	
+				<div class="tooltip" id='apiresult'></div>
+			</div>
+			<div id='cnt' class="input_wrapper"></div>
+			<div id='xcombo' class="input_wrapper"></div>
+			<div id='ycombo' class="input_wrapper"></div>	
 	  	</div>
 	</div>
 	
