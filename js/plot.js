@@ -40,7 +40,7 @@ function testApi(){
         $('#url').removeClass("error");
         $('#apikey').removeClass("error");
         let keys=Object.keys(data[0]);
-        let cnt = '<label for="count">Count&nbsp;</label><input type="number" min="10" max="1000" id="count" value="100" name="count"><div class="tooltip">&nbsp;&#x24D8;<span class="tooltiptext">Number of records to be retrieved.</span></div>';
+        let cnt = '<label for="count">Count&nbsp;</label><input type="text" id="count" value="100" name="count"><div class="tooltip">&nbsp;&#x24D8;<span class="tooltiptext">Number of records to be retrieved. Must be between 10 and 1,000.</span></div>';
         let xsel='<label for="x">X variable&nbsp;</label><select name="x" id="x"><option value="" selected disabled hidden>Choose x variable</option>';
         let ysel='<label for="y">Y variable&nbsp;</label><select name="y" id="y"><option value="" selected disabled hidden>Choose y variable</option>';
         keys.forEach(function(item,index){
@@ -80,6 +80,9 @@ function activateCombos(){
       verifyCombos();      
     });        
   });
+  $("#count").keyup(function(){
+    this.value=this.value.replace(/[^\d]/,'')
+  });
 }
 
 function verifyCombos(){
@@ -113,8 +116,14 @@ function verifyCombos(){
 
 function getData(){ //download and visualize the data
   let cnt = parseInt($('#count').val());
+  if ((cnt>1000) || (cnt<10)){
+      $('#count').addClass("error");  
+      return;    
+    } else {
+      $('#count').removeClass("error");      
+    }
   //let cnt = 100;
-  console.log(url+cnt);
+  //console.log(url+cnt);
   $.get(url+cnt)
     .success(function(d){
       plotData(d,xKey,yKey);
