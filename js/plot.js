@@ -81,7 +81,12 @@ function activateCombos(){
     });        
   });
   $("#count").keyup(function(){
-    this.value=this.value.replace(/[^\d]/,'')
+    this.value=this.value.replace(/[^\d]/,'');
+    if ((parseInt(this.value)>1000) || (parseInt(this.value)<10)){
+      $(this).addClass("error");          
+    } else {
+      $(this).removeClass("error");      
+    }
   });
 }
 
