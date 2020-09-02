@@ -162,7 +162,9 @@ function plotData(idata,xk,yk,wm){
   //console.log(pdata);
   Plotly.newPlot('div1',[pdata[0],pdata[1]],layout,config);
   const score = regression.score(xdata,ydata);
-  $("#div2").html('Line Equation '+regression.toString()+
-                    '<br>R: '+score.r+ ' R<sup>2</sup>: '+score.r2+ ' &#967;<sup>2</sup>: '+score.chi2+
-                    ' RMSD: '+score.rmsd);
+  $("#div2").html( //'Line Equation '+ regression.toString() +
+                   'Line Equation f(x) = ' + regression.slope.toFixed(3) + ' * x ' + 
+                   ((regression.intercept>0) ? ('+ '+regression.intercept.toFixed(3)) : ('- '+regression.intercept.toFixed(3).slice(1))) +
+                   '<br>R: '+score.r.toFixed(3)+'&nbsp;&nbsp;&nbsp;&nbsp; R<sup>2</sup>: '+score.r2.toFixed(3)+ '&nbsp;&nbsp;&nbsp;&nbsp;&#967;<sup>2</sup>: '+score.chi2.toFixed(3)+
+                   '&nbsp;&nbsp;&nbsp;&nbsp;RMSD: '+score.rmsd.toFixed(3));
 }
