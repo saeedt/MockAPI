@@ -504,7 +504,7 @@ const data = [
 const baseLayout = {
   images: [{
     name: 'sample',
-    source: 'css/sample.png',
+    source: 'img/sample.png',
     xref: "paper",
     yref: "paper",
     x: 0.1,

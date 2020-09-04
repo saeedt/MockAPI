@@ -3,13 +3,17 @@ var xKey;
 var yKey;
 
 $(document).ready(function(){
+  $('#popup').popup();
+  $('#popup_open').click(function(e) {
+      $('#popup').popup('show');
+  });
   $('#url').keydown(function(e) {
       var oldvalue=$(this).val();
       var field=this;
       setTimeout(function () {
           if(field.value.indexOf('https://api.mockaroo.com/api/') !== 0) {
               $(field).val(oldvalue);
-          } 
+          }
       }, 1);
   });
   plotData(data,'x','y',true);
@@ -56,11 +60,11 @@ function testApi(){
         url = schema+'?key='+apk+'&count=';
         } else {
           apiError('No data received.');
-        }      
+        }
     })
     .error(function(jqXHR, textStatus, errorThrown){
       apiError(textStatus);
-    }) 
+    })
   }
 }
 
@@ -75,17 +79,17 @@ function apiError(msg){
 }
 
 function activateCombos(){
-  $("select").each(function(){    
-      $(this).change(function() {       
-      verifyCombos();      
-    });        
+  $("select").each(function(){
+      $(this).change(function() {
+      verifyCombos();
+    });
   });
   $("#count").keyup(function(){
     this.value=this.value.replace(/[^\d]/,'');
     if ((parseInt(this.value)>1000) || (parseInt(this.value)<10)){
-      $(this).addClass("error");          
+      $(this).addClass("error");
     } else {
-      $(this).removeClass("error");      
+      $(this).removeClass("error");
     }
   });
 }
@@ -115,17 +119,17 @@ function verifyCombos(){
     $('#y').removeClass("error");
     $('#getData').removeAttr("disabled");
     xKey = $('#x').val();
-    yKey = $('#y').val();    
-  }  
+    yKey = $('#y').val();
+  }
 }
 
 function getData(){ //download and visualize the data
   let cnt = parseInt($('#count').val());
   if ((cnt>1000) || (cnt<10)){
-      $('#count').addClass("error");  
-      return;    
+      $('#count').addClass("error");
+      return;
     } else {
-      $('#count').removeClass("error");      
+      $('#count').removeClass("error");
     }
   //let cnt = 100;
   //console.log(url+cnt);
@@ -149,12 +153,12 @@ function plotData(idata,xk,yk,wm){
     predydata[i] = Math.round(regression.predict(sortxdata[i]));//Math.round((regression.predict(sortxdata[i])*100)+Number.EPSILON);
   }
 
-  const layout = {template: template, 
+  const layout = {template: template,
                             images: [{templateitemname: 'sample',visible: wm}],
                             legend:{x:1,xanchor:'right',y:1.1,orientation:'h',font:{size:18}},
                             xaxis:{title:{text:xk,font:{size:18}},dtick:10},
                             yaxis:{title:{text:yk,font:{size:18}}}
-                          };                          
+                          };
   const config = {
     responsive: true,
     toImageButtonOptions: {
@@ -164,12 +168,12 @@ function plotData(idata,xk,yk,wm){
       width: 1800,
       scale: 1 // Multiply title/legend/axis/canvas sizes by this factor
     }
-  };            
-  const pdata = [{'x' : xdata,                  
+  };
+  const pdata = [{'x' : xdata,
                 'y' : ydata,
                 'name' : 'Actual Data',
                 'mode' : 'markers'},
-                {'x' : sortxdata,                  
+                {'x' : sortxdata,
                 'y' : predydata,
                 'name' : 'Regression Line',
                 'mode' : 'lines'}];
@@ -177,7 +181,7 @@ function plotData(idata,xk,yk,wm){
   Plotly.newPlot('div1',[pdata[0],pdata[1]],layout,config);
   const score = regression.score(xdata,ydata);
   $("#div2").html( //'Line Equation '+ regression.toString() +
-                   'Line Equation f(x) = ' + regression.slope.toFixed(3) + ' * x ' + 
+                   'Line Equation f(x) = ' + regression.slope.toFixed(3) + ' * x ' +
                    ((regression.intercept>0) ? ('+ '+regression.intercept.toFixed(3)) : ('- '+regression.intercept.toFixed(3).slice(1))) +
                    '<br>R: '+score.r.toFixed(3)+'&nbsp;&nbsp;&nbsp;&nbsp; R<sup>2</sup>: '+score.r2.toFixed(3)+ '&nbsp;&nbsp;&nbsp;&nbsp;&#967;<sup>2</sup>: '+score.chi2.toFixed(3)+
                    '&nbsp;&nbsp;&nbsp;&nbsp;RMSD: '+score.rmsd.toFixed(3));
