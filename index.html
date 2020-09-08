@@ -14,20 +14,17 @@
 
 <body>
 	<div id='head'>
-		<h3>Mockaroo API Data Visualization Tool</h3>
-  		<p>A simple web application to retrieve and visualize data through Mockaroo.com API</p>
+		<h3>viusalroo</h3>
+  		<p>A web application to retrieve and visualize data using Mockaroo.com API</p>
 	</div>
     <div id="popup">
-        <h2>How to set up your Mockaroo.com schema in the visualization tool</h2>
-        1. Create and set up your schema in  <a href="https://www.mockaroo.com/" target="_blank">www.mockaroo.com/</a><br>
-        2. Find your share link at the bottom of the schema page. Copy the last part of the share link and paste it in the schema link box.<br>
-        <img src="img/1.png" alt="Share Link" >
-        3. Get your API key from your schema. API key is the characters after 'key=' attribute in the sample URL (curl).<br>
-        <img src="img/2.png" alt="API Key" >
-        4. Enter the key into API key text box and click the 'Test API' button.
-        <img src="img/3.png" alt="API Key" >
-        5. Set the number of records to be retrieved from the schema (10 to 1000), pick X and Y variables and cilck 'Retrieve Data'.
-        <img src="img/4.png" alt="API Key" >
+        <h2>How to set up your Mockaroo schema in Visualroo</h2>
+        Visualroo works with any registered user's <a href="https://www.mockaroo.com/" target="_blank">Mockaroo</a> account. In Mockaroo create the schema, format it in JavaScript Object Notation (JSON), and save the schema. Start <a href="https://visualroo.my.to" target="_blank">Visualroo</a>, copy the schema link and API key to Visualroo, click the test API button, choose x and y variables, and click the Retrieve Data button. <br>
+        <img id="myimg" src="img/1.png" alt="Share Link" >
+        <div id="mymodal" class="modal">
+            <span id="close" class="close">&times;</span>
+            <img class="modal-content" id="img01">            
+        </div>
     </div>
 	<div id='p1'>
 		<h4>Data Visualization</h4>

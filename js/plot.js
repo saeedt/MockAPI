@@ -16,6 +16,7 @@ $(document).ready(function(){
           }
       }, 1);
   });
+  activateModal();
   plotData(data,'x','y',true);
 });
 
@@ -185,4 +186,14 @@ function plotData(idata,xk,yk,wm){
                    ((regression.intercept>0) ? ('+ '+regression.intercept.toFixed(3)) : ('- '+regression.intercept.toFixed(3).slice(1))) +
                    '<br>R: '+score.r.toFixed(3)+'&nbsp;&nbsp;&nbsp;&nbsp; R<sup>2</sup>: '+score.r2.toFixed(3)+ '&nbsp;&nbsp;&nbsp;&nbsp;&#967;<sup>2</sup>: '+score.chi2.toFixed(3)+
                    '&nbsp;&nbsp;&nbsp;&nbsp;RMSD: '+score.rmsd.toFixed(3));
+}
+
+function activateModal(){
+    $('#myimg').click(function(e) {
+        $('#mymodal').css("display","block");
+        $('#img01').attr("src", this.src);        
+    });
+    $('#close').click(function(e){
+        $('#mymodal').css("display","none");
+    });
 }
