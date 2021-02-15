@@ -112,6 +112,7 @@ h4 {
 .error {
   border:2px solid red;
 }
+<<<<<<< Updated upstream
 
 .popup_content {
   margin: 10px;
@@ -197,3 +198,13 @@ img:hover {
   .modal-content {
     width: 100%;
   }
+=======
+.image-holder {
+  width: 500px;
+  height: auto;
+  position: absolute;
+  left: 300px;
+  top: 200px; /* Or perhaps different coordinates */
+  display: none;
+}
+>>>>>>> Stashed changes
