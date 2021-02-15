@@ -198,7 +198,7 @@ img:hover {
   .modal-content {
     width: 100%;
   }
-=======
+
 .image-holder {
   width: 500px;
   height: auto;
@@ -207,4 +207,3 @@ img:hover {
   top: 200px; /* Or perhaps different coordinates */
   display: none;
 }
->>>>>>> Stashed changes

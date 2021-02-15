@@ -188,20 +188,18 @@ function plotData(idata,xk,yk,wm){
                    '&nbsp;&nbsp;&nbsp;&nbsp;RMSD: '+score.rmsd.toFixed(3));
 }
 
-<<<<<<< Updated upstream
 function activateModal(){
     $('#myimg').click(function(e) {
         $('#mymodal').css("display","block");
-        $('#img01').attr("src", this.src);        
+        $('#img01').attr("src", this.src);
     });
     $('#close').click(function(e){
         $('#mymodal').css("display","none");
     });
 }
-=======
+
 function showHelp1() {
   var img = document.getElementById('image-holder');
   img.src = "sample.png";
   img.style.display = 'block';
 }
->>>>>>> Stashed changes
